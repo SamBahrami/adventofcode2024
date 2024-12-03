@@ -44,6 +44,9 @@ input_lists = read_list(input_txt)
 
 valid_lists = 0
 for input_list in input_lists:
-    if check_list_safety(input_list):
-        valid_lists += 1
+    # Check every input_list with a single element removed
+    for i in range(len(input_list)):
+        if check_list_safety(input_list[:i] + input_list[i+1:]):
+            valid_lists += 1
+            break
 print(valid_lists)
