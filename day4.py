@@ -27,6 +27,20 @@ for i in range(len(input_grid)):
                     # word_search(input_grid, 0, 5, "", 0, 1)
                     if word_search(input_grid, i, j, "", xinc, yinc):
                         xmas_counter += 1
-                        print (i, j, xinc, yinc)
+                        # print (i, j, xinc, yinc)
 
 print(xmas_counter)
+
+# Part B, finding X MAS's
+mas_counter = 0
+gt = ["M", "S"]
+for i in range(1, len(input_grid)-1):
+    for j in range(1, len(input_grid[i])-1):
+        if input_grid[i][j] == "A":
+            topleft, topright = input_grid[i-1][j-1], input_grid[i-1][j+1]
+            bottomleft, bottomright = input_grid[i+1][j-1], input_grid[i+1][j+1]
+            if sorted(topleft+bottomright) == gt and sorted(topright+bottomleft) == gt:
+                mas_counter += 1
+                # print(i, j)
+                    
+print(mas_counter)
